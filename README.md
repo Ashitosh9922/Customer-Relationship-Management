@@ -8,7 +8,6 @@ The **Content Management Platform (CMP)** is a simple, efficient solution built 
 ## Key Features
 
 - **Dashboard**: Displays a comprehensive overview of recent activities, including customer and order details.
-- **Customer Management**: Easily add, view, update, and delete customer information.
 - **Product Management**: Manage product details like name, price, and categories.
 - **Order Management**: Track and manage customer orders, including status updates.
 - **Django Admin Panel**: A powerful interface for managing all models (Customers, Products, Orders) via Django’s built-in admin panel.
