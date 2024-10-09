@@ -21,7 +21,7 @@ def dashBoard(request):
 	context = {'customers':customers, 'orders':orders,
 	'total_customers':total_customers,'total_orders':total_orders, 
 	'delivered':delivered, 'pending':pending}
-	return render(request, 'accounts/dashBoard.html', context)
+	return render(request, 'accounts/dashboard.html', context)
 
 def products(request):
 	products = Product.objects.all()
