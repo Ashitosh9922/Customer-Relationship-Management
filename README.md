@@ -1,9 +1,9 @@
 
-# Content Management Platform (CMP)
+# Customer Management Platform (CMP)
 
 ## Overview
 
-The **Content Management Platform (CMP)** is a simple, efficient solution built using Django that provides core functionality for managing customers, products, and orders. The platform is designed to help businesses streamline essential business operations in a centralized and user-friendly application.
+The **Customer Management Platform (CMP)** is a simple, efficient solution built using Django that provides core functionality for managing customers, products, and orders. The platform is designed to help businesses streamline essential business operations in a centralized and user-friendly application.
 
 ## Key Features
 
