@@ -4,6 +4,8 @@ from .models import *
 from . forms import OrderForm
 from .filters import OrderFilter
 
+
+
 #-------------------(DETAIL/LIST VIEWS) -------------------
 
 def dashBoard(request):
@@ -21,7 +23,7 @@ def dashBoard(request):
 	context = {'customers':customers, 'orders':orders,
 	'total_customers':total_customers,'total_orders':total_orders, 
 	'delivered':delivered, 'pending':pending}
-	return render(request, 'accounts/dashBoard.html', context)
+	return render(request, 'accounts/dashboard.html', context)
 
 def products(request):
 	products = Product.objects.all()
@@ -32,8 +34,6 @@ def customer(request, pk):
 	customer = Customer.objects.get(id=pk)
 	orders = customer.order_set.all()
 	total_orders = orders.count()
-
-
 
 	orderFilter = OrderFilter(request.GET, queryset=orders) 
 	orders = orderFilter.qs
@@ -84,3 +84,49 @@ def deleteOrder(request, pk):
 		return redirect(customer_url)
 		
 	return render(request, 'accounts/delete_item.html', {'item':order})
+
+
+
+# Import your CustomerForm
+from .forms import CustomerForm
+
+# Create Customer View
+def createCustomer(request):
+    form = CustomerForm()
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')  # Redirect to dashboard or a customer list page
+
+    context = {'form': form}
+    return render(request, 'accounts/customer_form.html', context)
+
+
+
+# Update Customer View
+def updateCustomer(request, pk):
+    customer = Customer.objects.get(id=pk)
+    form = CustomerForm(instance=customer)
+
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('/')  # Redirect to dashboard or a customer list page
+
+    context = {'form': form, 'customer': customer}
+    return render(request, 'accounts/customer_form.html', context)
+
+
+
+# Delete Customer View
+def deleteCustomer(request, pk):
+    customer = Customer.objects.get(id=pk)
+
+    if request.method == 'POST':
+        customer.delete()
+        return redirect('/')  # Redirect to dashboard or a customer list page
+
+    context = {'customer': customer}
+    return render(request, 'accounts/delete_customer.html', context)
