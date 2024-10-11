@@ -1,14 +1,12 @@
 from django.forms import ModelForm
 from .models import Customer, Order
+from django import forms
 
 class OrderForm(ModelForm):
 	class Meta:
 		model = Order
 		fields = '__all__'
 
-
-from django import forms
-from .models import Customer
 
 class CustomerForm(forms.ModelForm):
     class Meta:
